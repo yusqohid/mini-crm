@@ -30,7 +30,7 @@
                                         Email
                                     </th>
                                     <th scope="col" class="px-6 py-3 font-medium">
-                                        Category
+                                        Roles
                                     </th>
                                     <th scope="col" class="px-6 py-3 font-medium">
                                         Action
@@ -48,7 +48,7 @@
                                             {{ $user->email }}
                                         </td>
                                         <td class="px-6 py-4">
-                                            Laptop
+                                            {{ $user->getRoleNames()->first() }}
                                         </td>
                                         <td class="px-6 py-4">
                                             <a href="{{ route('users.edit', $user->id) }}"

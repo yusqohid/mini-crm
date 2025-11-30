@@ -61,7 +61,12 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $user->update($request->all());
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
+
+        $user->syncRoles($request->role);
 
         return to_route('users.index')->with('success', 'User berhasil di update!');
     }
