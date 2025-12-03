@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     @if (session('success'))
@@ -17,7 +17,7 @@
 
                     <x-secondary-button class="mb-3">
                         <a href="{{ route('projects.create') }}">
-                            {{ __('Add new Client') }}
+                            {{ __('Add new Project') }}
                         </a>
                     </x-secondary-button>
                     <div
@@ -26,13 +26,15 @@
                             <thead class="bg-gray-100 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
                                 <tr>
                                     <th scope="col" class="px-6 py-3 font-semibold text-gray-900 dark:text-gray-100">
-                                        Name</th>
+                                        Title</th>
                                     <th scope="col" class="px-6 py-3 font-semibold text-gray-900 dark:text-gray-100">
-                                        Email</th>
+                                        Assigned to</th>
                                     <th scope="col" class="px-6 py-3 font-semibold text-gray-900 dark:text-gray-100">
-                                        Phone Number</th>
+                                        Client</th>
                                     <th scope="col" class="px-6 py-3 font-semibold text-gray-900 dark:text-gray-100">
-                                        Company Name</th>
+                                        Deadline</th>
+                                    <th scope="col" class="px-6 py-3 font-semibold text-gray-900 dark:text-gray-100">
+                                        Status</th>
                                     <th scope="col" class="px-6 py-3 font-semibold text-gray-900 dark:text-gray-100">
                                         Action</th>
                                 </tr>
@@ -44,11 +46,12 @@
                                         class="odd:bg-white even:bg-gray-50 dark:odd:bg-gray-900/50 dark:even:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
                                         <th scope="row"
                                             class="px-6 py-4 font-medium text-gray-900 dark:text-gray-100 whitespace-nowrap">
-                                            {{ $project->contact_name }}
+                                            {{ $project->title }}
                                         </th>
-                                        <td class="px-6 py-4">{{ $project->contact_email }}</td>
-                                        <td class="px-6 py-4">{{ $project->contact_phone_number }}</td>
-                                        <td class="px-6 py-4">{{ $project->company_name }}</td>
+                                        <td class="px-6 py-4">{{ $project->user->name }}</td>
+                                        <td class="px-6 py-4">{{ $project->client->company_name }}</td>
+                                        <td class="px-6 py-4">{{ $project->deadline_at }}</td>
+                                        <td class="px-6 py-4">{{ $project->status }}</td>
                                         <td class="px-6 py-4">
 
                                             <a href="{{ route('projects.edit', $project->id) }}"

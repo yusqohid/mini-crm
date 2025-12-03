@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Project;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateProjectRequest extends FormRequest
 {
@@ -11,7 +13,7 @@ class UpdateProjectRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +24,12 @@ class UpdateProjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title'       => ['required'],
+            'description' => ['required'],
+            'user_id'     => ['required', Rule::exists('users', 'id')],
+            'client_id'   => ['required', Rule::exists('clients', 'id')],
+            'deadline_at' => ['required', 'date'],
+            'status'      => ['required', Rule::in(Project::STATUS)],
         ];
     }
 }
