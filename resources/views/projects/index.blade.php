@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            Clients
+            Projects
         </h2>
     </x-slot>
 
@@ -16,7 +16,7 @@
                     @endif
 
                     <x-secondary-button class="mb-3">
-                        <a href="{{ route('clients.create') }}">
+                        <a href="{{ route('projects.create') }}">
                             {{ __('Add new Client') }}
                         </a>
                     </x-secondary-button>
@@ -39,24 +39,24 @@
                             </thead>
 
                             <tbody>
-                                @foreach ($clients as $client)
+                                @foreach ($projects as $project)
                                     <tr
                                         class="odd:bg-white even:bg-gray-50 dark:odd:bg-gray-900/50 dark:even:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
                                         <th scope="row"
                                             class="px-6 py-4 font-medium text-gray-900 dark:text-gray-100 whitespace-nowrap">
-                                            {{ $client->contact_name }}
+                                            {{ $project->contact_name }}
                                         </th>
-                                        <td class="px-6 py-4">{{ $client->contact_email }}</td>
-                                        <td class="px-6 py-4">{{ $client->contact_phone_number }}</td>
-                                        <td class="px-6 py-4">{{ $client->company_name }}</td>
+                                        <td class="px-6 py-4">{{ $project->contact_email }}</td>
+                                        <td class="px-6 py-4">{{ $project->contact_phone_number }}</td>
+                                        <td class="px-6 py-4">{{ $project->company_name }}</td>
                                         <td class="px-6 py-4">
 
-                                            <a href="{{ route('clients.edit', $client->id) }}"
+                                            <a href="{{ route('projects.edit', $project->id) }}"
                                                 class="inline-block px-3 py-1 rounded-md bg-blue-600 text-white text-xs font-medium hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition">
                                                 Edit
                                             </a>
-                                            <form method="POST" action="{{ route('clients.destroy', $client->id) }}"
-                                                onsubmit="return confirm('Apakah anda yakin menghapus client ini?')"
+                                            <form method="POST" action="{{ route('projects.destroy', $project->id) }}"
+                                                onsubmit="return confirm('Apakah anda yakin menghapus project ini?')"
                                                 class="inline-block">
                                                 @csrf
                                                 @method('DELETE')
@@ -74,7 +74,7 @@
 
 
                     <div class="mt-4">
-                        {{ $clients->links() }}
+                        {{ $projects->links() }}
                     </div>
                 </div>
             </div>

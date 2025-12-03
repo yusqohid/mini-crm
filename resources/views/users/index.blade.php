@@ -21,27 +21,27 @@
                         </a>
                     </x-secondary-button>
                     <div
-                        class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
-                        <table class="w-full text-sm text-left rtl:text-right text-body">
-                            <thead class="bg-neutral-secondary-soft border-b border-default">
+                        class="relative overflow-x-auto bg-white dark:bg-gray-900 shadow rounded-lg border border-gray-200 dark:border-gray-700">
+                        <table class="w-full text-sm text-left rtl:text-right text-gray-700 dark:text-gray-300">
+                            <thead class="bg-gray-100 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
                                 <tr>
-                                    <th scope="col" class="px-6 py-3 font-medium">Name</th>
-                                    <th scope="col" class="px-6 py-3 font-medium">
-                                        Email
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 font-medium">
-                                        Roles
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 font-medium">
-                                        Action
-                                    </th>
+                                    <th scope="col" class="px-6 py-3 font-semibold text-gray-900 dark:text-gray-100">
+                                        Name</th>
+                                    <th scope="col" class="px-6 py-3 font-semibold text-gray-900 dark:text-gray-100">
+                                        Email</th>
+                                    <th scope="col" class="px-6 py-3 font-semibold text-gray-900 dark:text-gray-100">
+                                        Roles</th>
+                                    <th scope="col" class="px-6 py-3 font-semibold text-gray-900 dark:text-gray-100">
+                                        Action</th>
                                 </tr>
                             </thead>
+
                             <tbody>
                                 @foreach ($users as $user)
                                     <tr
-                                        class="odd:bg-neutral-primary even:bg-neutral-secondary-soft border-b border-default">
-                                        <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">
+                                        class="odd:bg-white even:bg-gray-50 dark:odd:bg-gray-900/50 dark:even:bg-gray-800 border-b border-gray-200 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                                        <th scope="row"
+                                            class="px-6 py-4 font-medium text-gray-900 dark:text-gray-100 whitespace-nowrap">
                                             {{ $user->name }}
                                         </th>
                                         <td class="px-6 py-4">
@@ -50,17 +50,21 @@
                                         <td class="px-6 py-4">
                                             {{ $user->getRoleNames()->first() }}
                                         </td>
-                                        <td class="px-6 py-4">
+                                        <td class="px-6 py-4 space-x-2">
                                             <a href="{{ route('users.edit', $user->id) }}"
-                                                class="font-medium text-fg-brand hover:underline">Edit</a>
-                                            |
-                                            <form method='POST' action="{{ route('users.destroy', $user->id) }}"
+                                                class="inline-block px-3 py-1 rounded-md bg-blue-600 text-white text-xs font-medium hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition">
+                                                Edit
+                                            </a>
+
+                                            <form method="POST" action="{{ route('users.destroy', $user->id) }}"
                                                 onsubmit="return confirm('Apakah anda yakin menghapus user ini?')"
                                                 class="inline-block">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit"
-                                                    class="font-medium text-red-600 hover:underline">Delete</button>
+                                                    class="px-3 py-1 rounded-md bg-red-600 text-white text-xs font-medium hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 transition">
+                                                    Delete
+                                                </button>
                                             </form>
                                         </td>
                                     </tr>
@@ -68,6 +72,7 @@
                             </tbody>
                         </table>
                     </div>
+
                     <div class="mt-4">
                         {{ $users->links() }}
                     </div>
