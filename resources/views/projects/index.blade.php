@@ -51,7 +51,9 @@
                                         <td class="px-6 py-4">{{ $project->user->name }}</td>
                                         <td class="px-6 py-4">{{ $project->client->company_name }}</td>
                                         <td class="px-6 py-4">{{ $project->deadline_at }}</td>
-                                        <td class="px-6 py-4">{{ $project->status }}</td>
+                                        <td class="px-6 py-4">
+                                            <x-status-badge :status="$project->status" />
+                                        </td>
                                         <td class="px-6 py-4">
 
                                             <a href="{{ route('projects.edit', $project->id) }}"
