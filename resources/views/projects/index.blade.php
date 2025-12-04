@@ -15,11 +15,11 @@
                         </div>
                     @endif
 
-                    <x-secondary-button class="mb-3">
-                        <a href="{{ route('projects.create') }}">
+                    <a href="{{ route('projects.create') }}">
+                        <x-secondary-button class="mb-3">
                             {{ __('Add new Project') }}
-                        </a>
-                    </x-secondary-button>
+                        </x-secondary-button>
+                    </a>
                     <div
                         class="relative overflow-x-auto bg-white dark:bg-gray-900 shadow rounded-lg border border-gray-200 dark:border-gray-700">
                         <table class="w-full text-sm text-left rtl:text-right text-gray-700 dark:text-gray-300">
@@ -52,7 +52,17 @@
                                         <td class="px-6 py-4">{{ $project->client->company_name }}</td>
                                         <td class="px-6 py-4">{{ $project->deadline_at }}</td>
                                         <td class="px-6 py-4">
-                                            <x-status-badge :status="$project->status" />
+                                            @php
+                                                $styleMap = [
+                                                    'open' => 'success',
+                                                    'in progress' => 'warning',
+                                                    'blocked' => 'secondary',
+                                                    'cancelled' => 'danger',
+                                                    'completed' => 'info',
+                                                ];
+                                            @endphp
+                                            <x-badge :style="$styleMap[$project->status]">{{ ucfirst($project->status) }}</x-badge>
+
                                         </td>
                                         <td class="px-6 py-4">
 

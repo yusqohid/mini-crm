@@ -15,11 +15,11 @@
                         </div>
                     @endif
 
-                    <x-secondary-button class="mb-3">
-                        <a href="{{ route('users.create') }}">
+                    <a href="{{ route('users.create') }}">
+                        <x-secondary-button class="mb-3">
                             {{ __('Create User') }}
-                        </a>
-                    </x-secondary-button>
+                        </x-secondary-button>
+                    </a>
                     <div
                         class="relative overflow-x-auto bg-white dark:bg-gray-900 shadow rounded-lg border border-gray-200 dark:border-gray-700">
                         <table class="w-full text-sm text-left rtl:text-right text-gray-700 dark:text-gray-300">
