@@ -16,7 +16,6 @@ class Task extends Model
         'title',
         'description',
         'user_id',
-        'client_id',
         'project_id',
         'deadline_at',
         'status',
@@ -33,11 +32,6 @@ class Task extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function client(): BelongsTo
-    {
-        return $this->belongsTo(Client::class);
     }
 
     public function project(): BelongsTo
